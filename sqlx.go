@@ -40,10 +40,10 @@ func mapper() *reflectx.Mapper {
 	defer mprMu.Unlock()
 
 	if mpr == nil {
-		mpr = reflectx.NewMapperFunc("db", NameMapper)
+		mpr = reflectx.NewMapperFunc("json", NameMapper)
 	} else if origMapper != reflect.ValueOf(NameMapper) {
 		// if NameMapper has changed, create a new mapper
-		mpr = reflectx.NewMapperFunc("db", NameMapper)
+		mpr = reflectx.NewMapperFunc("json", NameMapper)
 		origMapper = reflect.ValueOf(NameMapper)
 	}
 	return mpr
